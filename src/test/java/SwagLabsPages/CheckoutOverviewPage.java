@@ -3,6 +3,7 @@ package SwagLabsPages;
 import Actions.MobileActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class CheckoutOverviewPage {
     WebDriver driver;
@@ -16,8 +17,9 @@ public class CheckoutOverviewPage {
     /*
     This method checks the total price after taxes in the last stage of purchase
      */
-    public boolean CheckTotalPrice(String totalPrice){
-        return driver.findElement(CHECK_OUT_PRICE).getAttribute("text").equals(totalPrice);
+    public CheckoutOverviewPage CheckTotalPrice(String totalPrice){
+        Assert.assertTrue(driver.findElement(CHECK_OUT_PRICE).getAttribute("text").equals(totalPrice));
+        return this;
     }
     public CheckoutOverviewPage finishCheckout(){
         new MobileActions(driver);

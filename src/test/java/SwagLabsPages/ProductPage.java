@@ -2,6 +2,7 @@ package SwagLabsPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class ProductPage {
     WebDriver driver;
@@ -18,8 +19,9 @@ public class ProductPage {
     /*
     This method checks whether we are at the product page or not after login
      */
-    public boolean AssertProductPage() {
-        return driver.findElement(PRODUCTS_WORD).getAttribute("text").equals("PRODUCTS");
+    public ProductPage AssertProductPage() {
+        Assert.assertTrue(driver.findElement(PRODUCTS_WORD).getAttribute("text").equals("PRODUCTS"));
+        return this;
     }
     /*
     this method adds product "Sauce Lab BackPack" to the cart
@@ -33,7 +35,8 @@ public class ProductPage {
         driver.findElement(CART_PAGE).click();
         return new CartPage(driver);
     }
-    public boolean AssertFirstProductName(String firstProductName) {
-        return driver.findElement(Sauce_Lab_BackPack_Name).getAttribute("text").equals(firstProductName);
+    public ProductPage AssertFirstProductName(String firstProductName) {
+        Assert.assertTrue(driver.findElement(Sauce_Lab_BackPack_Name).getAttribute("text").equals(firstProductName));
+        return this;
     }
 }

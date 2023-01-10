@@ -3,6 +3,7 @@ package SwagLabsPages;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -38,7 +39,8 @@ public class HomePage {
         driver.findElement(LOGIN_BTN).click();
         return this;
     }
-    public boolean validateWrongLogin(){
-        return driver.findElement(ERROR_MSG).getAttribute("text").equals("Username and password do not match any user in this service.");
+    public HomePage validateWrongLogin(){
+        Assert.assertTrue(driver.findElement(ERROR_MSG).getAttribute("text").equals("Username and password do not match any user in this service."));
+        return this;
     }
 }

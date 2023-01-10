@@ -3,6 +3,7 @@ package SwagLabsPages;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class CartPage {
     WebDriver driver;
@@ -18,12 +19,14 @@ public class CartPage {
     }
 
     /* This method check that the product share the same name as it was in the product page*/
-    public boolean validateProductName(String ProductName){
-        return driver.findElement(ValidateProductName).getAttribute("text").equals(ProductName);
+    public CartPage validateProductName(String ProductName){
+         Assert.assertTrue(driver.findElement(ValidateProductName).getAttribute("text").equals(ProductName));
+         return this;
     }
     /* This method check that the product share the same price as it was in the product page*/
-    public boolean validateProductPrice(String productPrice){
-        return driver.findElement(ValidateProductPrice).getAttribute("text").equals(productPrice);
+    public CartPage validateProductPrice(String productPrice){
+         Assert.assertTrue(driver.findElement(ValidateProductPrice).getAttribute("text").equals(productPrice));
+         return this;
     }
     public CartPage removeItemFromCart(){
         driver.findElement(REMOVE_BTN_IN_CART).click();

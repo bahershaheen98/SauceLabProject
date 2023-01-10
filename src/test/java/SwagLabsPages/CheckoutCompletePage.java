@@ -2,6 +2,7 @@ package SwagLabsPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class CheckoutCompletePage {
     WebDriver driver;
@@ -14,7 +15,8 @@ public class CheckoutCompletePage {
     /*
      This method checks that the order has been completed successfully
      */
-    public boolean validateCheckoutComplete(){
-        return driver.findElement(CHECKOUT_COMPLETE_TEXT).getAttribute("text").equals("THANK YOU FOR YOU ORDER");
+    public CheckoutCompletePage validateCheckoutComplete(){
+        Assert.assertTrue(driver.findElement(CHECKOUT_COMPLETE_TEXT).getAttribute("text").equals("THANK YOU FOR YOU ORDER"));
+        return this;
     }
 }
